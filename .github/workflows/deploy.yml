@@ -1,4 +1,3 @@
-# mise à jour des secrêts du profil de publication effectuée 
 name: Deploy Streamlit App to Azure
 
 on:
@@ -17,7 +16,7 @@ jobs:
     - name: Login to Azure Container Registry
       uses: azure/docker-login@v1
       with:
-        login-server: OC09Recommender.azurecr.io
+        login-server: oc09recommender.azurecr.io
         username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
         password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
 
@@ -26,11 +25,11 @@ jobs:
       with:
         context: .
         push: true
-        tags: OC09Recommender.azurecr.io/streamlit_app:latest
+        tags: oc09recommender.azurecr.io/streamlit_app:latest
 
     - name: Deploy to Azure App Service
       uses: azure/webapps-deploy@v2
       with:
         app-name: resultreco
         publish-profile: ${{ secrets.WEB_APP_PUBLISH_PROFILE }}
-        images: OC09Recommender.azurecr.io/streamlit_app:latest
+        images: oc09recommender.azurecr.io/streamlit_app:latest
