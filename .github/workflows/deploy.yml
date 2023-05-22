@@ -25,11 +25,11 @@ jobs:
       with:
         context: .
         push: true
-        tags: oc09recommender.azurecr.io/streamlit_app:latest
+        tags: oc09recommender.azurecr.io/oc09-streamlit-deploy-cosmo/streamlit_app:latest
 
     - name: Deploy to Azure App Service
       uses: azure/webapps-deploy@v2
       with:
         app-name: resultreco
         publish-profile: ${{ secrets.WEB_APP_PUBLISH_PROFILE }}
-        images: oc09recommender.azurecr.io/streamlit_app:latest
+        images: oc09recommender.azurecr.io/oc09-streamlit-deploy-cosmo/streamlit_app:latest
