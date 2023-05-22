@@ -30,6 +30,6 @@ jobs:
     - name: Deploy to Azure App Service
       uses: azure/webapps-deploy@v2
       with:
-        app-name: hybridrec
+        app-name: resultreco
         publish-profile: ${{ secrets.WEB_APP_PUBLISH_PROFILE }}
         images: OC09Recommender.azurecr.io/streamlit_app:latest
