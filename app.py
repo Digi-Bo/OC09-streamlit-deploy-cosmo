@@ -37,9 +37,11 @@ def app():
             st.write("Bienvenu sur notre application de recommandations.")
 
 
+
             recommendations = [data['recommended_article'] for data in user_data]
-            recommendations_list = "\n".join(f"{i}: {article}" for i, article in enumerate(recommendations[:5]))
-            
+            recommendations_list = "\n".join(f"- {article}" for article in recommendations[:5])
+
+
 
             st.subheader("Voici les 5 articles que nous vous recommandons  :")
             st.markdown(recommendations_list)
