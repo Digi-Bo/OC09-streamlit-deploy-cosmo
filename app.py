@@ -33,15 +33,18 @@ def app():
     if st.button('Get Recommendations'):
         user_data = get_user_data(user_id)
         if user_data is not None:
-            for data in user_data:
-                st.subheader(f"Recommendations for User {user_id}:")
-                st.write("Reference Start Date: ", data['ref_start_date'])
-                st.write("Reference End Date: ", data['ref_end_date'])
-                st.write("Prediction Start Date: ", data['pred_start_date'])
-                st.write("Prediction End Date: ", data['pred_end_date'])
-                st.write("Recommended Articles: ", data['recommended_article'])
+            st.subheader(f"Bonjour User {user_id}:")
+            st.write("Voici 5 articles que nous vous recommandons :")
+            recommendations = user_data[0]['recommended_article']
+            st.write(recommendations[:5])
+            st.write("Période d'étude de vos centres d'intérêt :")
+            st.write(" - Reference Start Date: ", user_data[0]['ref_start_date'])
+            st.write(" - Reference End Date: ", user_data[0]['ref_end_date'])
+            st.write("Période de publication des articles recommandés :")
+            st.write(" - Prediction Start Date: ", user_data[0]['pred_start_date'])
+            st.write(" - Prediction End Date: ", user_data[0]['pred_end_date'])
         else:
-            st.write("We don't have any recommendations for you at the moment, but we'll examine your interests and find articles that you might find interesting! You'll receive your recommendations in a few minutes :)")
+            st.write("Nous n'avons pas encore de recommandations pour vous, mais nous examinerons vos centres d'intérêt et trouverons des articles qui pourraient vous intéresser ! Vous recevrez vos recommandations dans quelques minutes :)")
 
 if __name__ == "__main__":
     app()
