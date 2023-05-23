@@ -39,10 +39,10 @@ def app():
 
             recommendations = [data['recommended_article'] for data in user_data]
             recommendations_list = "\n".join(f"{i}: {article}" for i, article in enumerate(recommendations[:5]))
-
+            
 
             st.subheader("Voici les 5 articles que nous vous recommandons  :")
-            st.write(recommendations_list)
+            st.markdown(recommendations_list)
 
             st.subheader("Période d'étude de vos centres d'intérêt :")
             st.write(" - Début : ", user_data[0]['ref_start_date'])
