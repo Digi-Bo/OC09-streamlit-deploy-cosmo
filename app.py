@@ -30,24 +30,18 @@ def app():
     st.title('Recommender System')
 
     user_id = st.number_input('Enter User ID', min_value=1, step=1)
-    if st.button('Recommande moi des supers articles !'):
+    if st.button('Recommande-moi de supers articles !'):
         user_data = get_user_data(user_id)
         if user_data is not None:
             st.subheader(f"Bonjour User {user_id}:")
-            st.write("Voici les 5 articles que nous vous recommandons :")
+            st.write("Bienvenu sur notre application de recommandations.")
 
 
             recommendations = [data['recommended_article'] for data in user_data]
             recommendations_list = "\n".join(f"{i}: {article}" for i, article in enumerate(recommendations[:5]))
-            st.markdown(f"Recommended Articles:\n\n{recommendations_list}")
 
 
-            recommendations = [data['recommended_article'] for data in user_data]
-            recommendations_list = "\n".join(f"- {article}" for article in recommendations[:5])
-            st.markdown(f"Recommended Articles:\n\n{recommendations_list}")
-
-
-            st.subheader("Articles recommandés :")
+            st.subheader("Voici les 5 articles que nous vous recommandons  :")
             st.write(recommendations_list)
 
             st.subheader("Période d'étude de vos centres d'intérêt :")
