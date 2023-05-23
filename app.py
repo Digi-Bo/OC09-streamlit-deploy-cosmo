@@ -38,7 +38,8 @@ def app():
 
 
             recommendations = [data['recommended_article'] for data in user_data]
-            st.write("Recommended Articles: ", recommendations[:5])
+            recommendations_list = "\n".join(f"{i}: {article}" for i, article in enumerate(recommendations[:5]))
+            st.markdown(f"Recommended Articles:\n\n{recommendations_list}")
 
         
             st.write("Période d'étude de vos centres d'intérêt :")
