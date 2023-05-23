@@ -30,26 +30,34 @@ def app():
     st.title('Recommender System')
 
     user_id = st.number_input('Enter User ID', min_value=1, step=1)
-    if st.button('Get Recommendations'):
+    if st.button('Recommande moi des supers articles !'):
         user_data = get_user_data(user_id)
         if user_data is not None:
             st.subheader(f"Bonjour User {user_id}:")
-            st.write("Voici 5 articles que nous vous recommandons :")
+            st.write("Voici les 5 articles que nous vous recommandons :")
 
 
             recommendations = [data['recommended_article'] for data in user_data]
             recommendations_list = "\n".join(f"{i}: {article}" for i, article in enumerate(recommendations[:5]))
             st.markdown(f"Recommended Articles:\n\n{recommendations_list}")
 
-        
-            st.write("Période d'étude de vos centres d'intérêt :")
-            st.write(" - Reference Start Date: ", user_data[0]['ref_start_date'])
-            st.write(" - Reference End Date: ", user_data[0]['ref_end_date'])
-            st.write("Période de publication des articles recommandés :")
-            st.write(" - Prediction Start Date: ", user_data[0]['pred_start_date'])
-            st.write(" - Prediction End Date: ", user_data[0]['pred_end_date'])
+
+            recommendations = [data['recommended_article'] for data in user_data]
+            recommendations_list = "\n".join(f"- {article}" for article in recommendations[:5])
+            st.markdown(f"Recommended Articles:\n\n{recommendations_list}")
+
+
+            st.subheader("Articles recommandés :")
+            st.write(recommendations_list)
+
+            st.subheader("Période d'étude de vos centres d'intérêt :")
+            st.write(" - Début : ", user_data[0]['ref_start_date'])
+            st.write(" - Fin : ", user_data[0]['ref_end_date'])
+            st.subheader("Période de publication des articles recommandés :")
+            st.write(" - Début : ", user_data[0]['pred_start_date'])
+            st.write(" - Fin : ", user_data[0]['pred_end_date'])
         else:
-            st.write("Nous n'avons pas encore de recommandations pour vous, mais nous examinerons vos centres d'intérêt et trouverons des articles qui pourraient vous intéresser ! Vous recevrez vos recommandations dans quelques minutes :)")
+            st.write("Nous n'avons pas encore de recommandations pour vous, mais nous examinons vos centres d'intérêt et nous allons vous proposer des articles qui pourraient vous intéresser ! Vous recevrez vos recommandations dans quelques minutes :)")
 
 if __name__ == "__main__":
     app()
