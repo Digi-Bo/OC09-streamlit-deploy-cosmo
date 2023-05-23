@@ -35,8 +35,12 @@ def app():
         if user_data is not None:
             st.subheader(f"Bonjour User {user_id}:")
             st.write("Voici 5 articles que nous vous recommandons :")
-            recommendations = user_data[0]['recommended_article']
-            st.write(recommendations[:5])
+
+
+            recommendations = [data['recommended_article'] for data in user_data]
+            st.write("Recommended Articles: ", recommendations[:5])
+
+        
             st.write("Période d'étude de vos centres d'intérêt :")
             st.write(" - Reference Start Date: ", user_data[0]['ref_start_date'])
             st.write(" - Reference End Date: ", user_data[0]['ref_end_date'])
