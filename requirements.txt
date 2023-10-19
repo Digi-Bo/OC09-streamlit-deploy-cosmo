@@ -1,2 +1,6 @@
 streamlit
 azure-cosmos
+streamlit
+pandas
+numpy
+plotly
